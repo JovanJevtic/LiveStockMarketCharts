@@ -11,7 +11,20 @@ interface PostObject {
     id: number;
 }
 
-export const useFetch = (uri: string) => {
+interface ConfigTypes {
+    params: {
+        q?: string;
+        region?: string;
+    };
+    headers: {
+        'x-rapidapi-key': string;
+        'x-rapidapi-host': string;
+    }
+    json: boolean;
+    gzip: boolean;
+}
+
+export const useFetch = (uri: string, config: ConfigTypes) => {
     const [ data, setData ] = useState<Array<PostObject>>([]);
     const [ isLoading, setIsLoading ] = useState<boolean | null>(null);
     const [ error, setError ] = useState<Error>({ isError: false, errMessage: '' });
@@ -24,7 +37,7 @@ export const useFetch = (uri: string) => {
         async function fetchData () {
             try {
                 let res = await axios.get(uri, {
-                    cancelToken: source.token
+                    cancelToken: source.token, ...config
                 });
                 setIsLoading(false);
                 setData(res.data);
@@ -38,7 +51,7 @@ export const useFetch = (uri: string) => {
         return () => {
             source.cancel();
         }
-    }, []); 
+    }, [config.params.q]); 
 
     return { data, isLoading, error };
 }
