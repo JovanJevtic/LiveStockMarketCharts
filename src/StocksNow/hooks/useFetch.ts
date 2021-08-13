@@ -7,14 +7,28 @@ interface Error {
 }
 
 interface PostObject {
+    news: Array<StockNewsObject>;
+    quotes: Array<QuotesObject>
+}
+
+interface QuotesObject {
+    symbol: string;
+}
+
+interface StockNewsObject {
     title: string;
-    id: number;
+    uuid: number;
+    link: string;
+    publisher: string;
 }
 
 interface ConfigTypes {
     params: {
         q?: string;
         region?: string;
+        interval?: string; 
+        symbol?: string; 
+        range?: string;
     };
     headers: {
         'x-rapidapi-key': string;
@@ -25,7 +39,7 @@ interface ConfigTypes {
 }
 
 export const useFetch = (uri: string, config: ConfigTypes) => {
-    const [ data, setData ] = useState<Array<PostObject>>([]);
+    const [ data, setData ] = useState<PostObject>();
     const [ isLoading, setIsLoading ] = useState<boolean | null>(null);
     const [ error, setError ] = useState<Error>({ isError: false, errMessage: '' });
 
@@ -51,7 +65,7 @@ export const useFetch = (uri: string, config: ConfigTypes) => {
         return () => {
             source.cancel();
         }
-    }, [config.params.q]); 
+    }, [config.params.q, config.params.symbol]); 
 
     return { data, isLoading, error };
 }
