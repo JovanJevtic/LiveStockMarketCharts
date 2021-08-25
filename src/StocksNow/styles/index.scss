@@ -1,4 +1,5 @@
 @import './config/config';
+@import './components/app';
 
 * {
     margin: 0;
@@ -12,4 +13,9 @@
     min-height: 100vh;
     width: 100%;
 }
-    
+
+.container {
+    width: 94%;
+    height: 100%;
+    margin: 0 auto;
+}

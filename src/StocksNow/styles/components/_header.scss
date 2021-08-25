@@ -1,0 +1,22 @@
+.header {
+    height: 7vh;
+    min-height: 60px;
+    background: $black700;
+    width: 100%;
+    box-shadow: 3px 1px 3px #000;
+
+    nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .logo-wrapp {
+
+            #logo {
+                font-size: 24px;
+                font-weight: bold;
+                color: $green400;
+            }
+        }
+    }
+}

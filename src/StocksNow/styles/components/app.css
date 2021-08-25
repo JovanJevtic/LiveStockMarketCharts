@@ -1,18 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600;800&display=swap");
-p, a, div, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
-}
-
-h1, #logo {
-  font-family: 'Poppins', sans-serif;
-}
-
-a {
-  text-decoration: none;
-  color: #fff;
-}
-
 p, a, div, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
 }
@@ -72,24 +58,4 @@ a {
   display: -ms-flexbox;
   display: flex;
 }
-
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.app {
-  background: #000000;
-  color: #E2E8F0;
-  min-height: 100vh;
-  width: 100%;
-}
-
-.container {
-  width: 94%;
-  height: 100%;
-  margin: 0 auto;
-}
-/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=app.css.map */

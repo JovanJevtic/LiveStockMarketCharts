@@ -1,0 +1,14 @@
+@import '../config/config';
+@import './header';
+@import './sidebar';
+
+.content-wrapp {
+    height: 93vh;
+    width: 100%;
+
+    .content {
+        height: 100%;
+        width: 100%;
+        display: flex;
+    }
+}
