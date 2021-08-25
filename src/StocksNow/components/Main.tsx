@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import StockChart from './StockChart';
-import StockNews from './StockNews';
+import MainAside from './MainAside';
+import MainContent from './MainContent';
 
 interface Props {
 
@@ -17,9 +17,9 @@ const Main: React.FC<Props> = () => {
 
     return(
         <div className="main">
-            <input name="stockQuery" value={stockQuery} onChange={onStockQueryChange} />
-            <StockChart stockQuery={stockQuery} />
-            <StockNews stockQuery={stockQuery} />
+            <MainContent />
+
+            <MainAside stockQuery={stockQuery} />
         </div>
     );
 }

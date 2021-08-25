@@ -46,6 +46,41 @@ a {
   border-right: 1px solid #1A202C;
 }
 
+.main-aside {
+  height: 93vh;
+  width: 300px;
+  margin-right: 3%;
+}
+
+.main-aside .main-aside-cards-list {
+  background: red;
+  height: 100%;
+  width: 100%;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+}
+
+.main .main-content {
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+}
+
+.main .main-aside {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
 .content-wrapp {
   height: 93vh;
   width: 100%;
