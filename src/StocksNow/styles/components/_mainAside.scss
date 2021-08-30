@@ -1,11 +1,55 @@
 .main-aside {
-    height: 93vh;
-    width: 300px;
+    height: 80vh;
+    width: 500px;
     margin-right: 3%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    // background: green;
 
     .main-aside-cards-list {
-        background: red;
-        height: 100%;
+        height: 90%;
+        margin-top: 35px;
         width: 100%;
+        display: flex;
+        flex-direction: column;  
+        align-items: center;
+
+        .main-aside-card {
+            flex: 1;
+            width: 94%;
+            background: $black800;
+            border: 1px solid $black500;
+            border-radius: 5px;
+            // background: green;
+            min-height: 230px;
+            min-width: 300px;
+
+            &:not(:first-child) {
+                margin-top: 20px;
+            }
+
+            div {
+                // background: red;
+                height: 100%;
+                width: 100%;
+
+                .main-aside-card-href {
+                    height: 100%;
+                    width: 100%;
+                    display: block;
+                    padding: 10px;
+
+                    &:hover {
+                        cursor: pointer;
+                        // background: $black700;
+                        opacity: .4;
+                        transition: .4s background;
+                        transform: scale(96%);
+                        transition: .3s transform;
+                    }
+                }
+            }
+        }
     }
 }

@@ -61,15 +61,73 @@ a {
 }
 
 .main-aside {
-  height: 93vh;
-  width: 300px;
+  height: 80vh;
+  width: 500px;
   margin-right: 3%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .main-aside .main-aside-cards-list {
-  background: red;
+  height: 90%;
+  margin-top: 35px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main-aside .main-aside-cards-list .main-aside-card {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 94%;
+  background: #0d1117;
+  border: 1px solid #4A5568;
+  border-radius: 5px;
+  min-height: 230px;
+  min-width: 300px;
+}
+
+.main-aside .main-aside-cards-list .main-aside-card:not(:first-child) {
+  margin-top: 20px;
+}
+
+.main-aside .main-aside-cards-list .main-aside-card div {
   height: 100%;
   width: 100%;
+}
+
+.main-aside .main-aside-cards-list .main-aside-card div .main-aside-card-href {
+  height: 100%;
+  width: 100%;
+  display: block;
+  padding: 10px;
+}
+
+.main-aside .main-aside-cards-list .main-aside-card div .main-aside-card-href:hover {
+  cursor: pointer;
+  opacity: .4;
+  -webkit-transition: .4s background;
+  transition: .4s background;
+  -webkit-transform: scale(96%);
+          transform: scale(96%);
+  -webkit-transition: .3s transform;
+  transition: .3s transform;
 }
 
 .main {

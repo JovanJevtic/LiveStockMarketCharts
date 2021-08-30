@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFetch } from '../hooks/useFetch';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 interface Props {
     stockQuery: string;
@@ -22,32 +23,62 @@ const MainAside: React.FC<Props> = ({ stockQuery }) => {
 
     return(
         <div className="main-aside">
-            {
-                data && 
 
                 <ul className="main-aside-cards-list">
                     <div className="main-aside-card">
-                        <div key={data.news[0].uuid} style={{marginTop: '20px'}}>
-                            <a style={{fontSize: '22px', fontWeight: 'bold'}} href={data.news[0].link}>{data.news[0].title}</a>
-                            <p>Publisher: {data.news[0].publisher}</p>
+                        <div key={data?.news[0].uuid} >
+                            <a className="main-aside-card-href" href={data?.news[0].link}>
+                                <p style={{fontSize: '22px', fontWeight: 'bold'}}>{data?.news[0].title || 
+                                    <SkeletonTheme color="#202020" highlightColor="#444"> 
+                                        <Skeleton count={3} />
+                                        <Skeleton width={200} />
+                                    </SkeletonTheme>}
+                                </p>
+                                <p style={{marginTop: '15px'}}> { data?.news[0].publisher && <p>Publisher:</p> } {data?.news[0].publisher || 
+                                    <SkeletonTheme color="#202020" highlightColor="#444"> 
+                                        <Skeleton width={160} />
+                                    </SkeletonTheme>}
+                                </p>
+                            </a>
                         </div>
                     </div>
 
                     <div className="main-aside-card">
-                        <div key={data.news[1].uuid} style={{marginTop: '20px'}}>
-                            <a style={{fontSize: '22px', fontWeight: 'bold'}} href={data.news[1].link}>{data.news[1].title}</a>
-                            <p>Publisher: {data.news[1].publisher}</p>
+                        <div key={data?.news[1].uuid} >
+                            <a className="main-aside-card-href" href={data?.news[1].link}>
+                                <p style={{fontSize: '22px', fontWeight: 'bold'}}>{data?.news[1].title || 
+                                    <SkeletonTheme color="#202020" highlightColor="#444"> 
+                                        <Skeleton count={3} />
+                                        <Skeleton width={200} />
+                                    </SkeletonTheme>}
+                                </p>
+                                <p style={{marginTop: '15px'}}> { data?.news[1].publisher && <p>Publisher:</p> } {data?.news[1].publisher || 
+                                    <SkeletonTheme color="#202020" highlightColor="#444"> 
+                                        <Skeleton width={160} />
+                                    </SkeletonTheme>}
+                                </p>
+                            </a>
                         </div>
                     </div>
 
                     <div className="main-aside-card">
-                        <div key={data.news[2].uuid} style={{marginTop: '20px'}}>
-                            <a style={{fontSize: '22px', fontWeight: 'bold'}} href={data.news[2].link}>{data.news[2].title}</a>
-                            <p>Publisher: {data.news[2].publisher}</p>
+                        <div key={data?.news[2].uuid} >
+                            <a className="main-aside-card-href" href={data?.news[2].link}>
+                                <p style={{fontSize: '22px', fontWeight: 'bold'}}>{data?.news[2].title || 
+                                    <SkeletonTheme color="#202020" highlightColor="#444"> 
+                                        <Skeleton count={3} />
+                                        <Skeleton width={200} />
+                                    </SkeletonTheme>}
+                                </p>
+                                <p style={{marginTop: '15px'}}> { data?.news[2].publisher && <p>Publisher:</p> } {data?.news[2].publisher || 
+                                    <SkeletonTheme color="#202020" highlightColor="#444"> 
+                                        <Skeleton width={160} />
+                                    </SkeletonTheme>}
+                                </p>
+                            </a>
                         </div>
                     </div>
                 </ul>
-            }
 
         </div>
     );
