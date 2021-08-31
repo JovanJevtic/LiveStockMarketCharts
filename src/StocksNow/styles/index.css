@@ -61,24 +61,9 @@ a {
 }
 
 .main-aside {
-  height: 80vh;
-  width: 500px;
+  height: 92vh;
+  width: 400px;
   margin-right: 3%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-}
-
-.main-aside .main-aside-cards-list {
-  height: 90%;
-  margin-top: 35px;
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -86,9 +71,62 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.main-aside .main-aside-cards-headline-wrapp {
+  height: 8%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
+}
+
+.main-aside .main-aside-cards-headline-wrapp h1 {
+  font-weight: bold;
+  font-size: 24px;
+  color: #CBD5E0;
+}
+
+.main-aside .main-aside-cards-footer-wrapp {
+  width: 100%;
+  height: 12%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main-aside .main-aside-cards-footer-wrapp p {
+  font-weight: bold;
+  font-size: 20px;
+  color: #A0AEC0;
+}
+
+.main-aside .main-aside-cards-list {
+  height: 80%;
+  width: 100%;
+  min-width: 360px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .main-aside .main-aside-cards-list .main-aside-card {
@@ -100,7 +138,6 @@ a {
   border: 1px solid #4A5568;
   border-radius: 5px;
   min-height: 230px;
-  min-width: 300px;
 }
 
 .main-aside .main-aside-cards-list .main-aside-card:not(:first-child) {
@@ -116,7 +153,14 @@ a {
   height: 100%;
   width: 100%;
   display: block;
-  padding: 10px;
+  padding: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .main-aside .main-aside-cards-list .main-aside-card div .main-aside-card-href:hover {
@@ -124,10 +168,40 @@ a {
   opacity: .4;
   -webkit-transition: .4s background;
   transition: .4s background;
-  -webkit-transform: scale(96%);
-          transform: scale(96%);
+  -webkit-transform: scale(98%);
+          transform: scale(98%);
   -webkit-transition: .3s transform;
   transition: .3s transform;
+}
+
+.main-aside .main-aside-cards-list .main-aside-card div .main-aside-card-href .main-aside-card-title-wrapp {
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+
+.main-aside .main-aside-cards-list .main-aside-card div .main-aside-card-href .main-aside-card-title-wrapp .main-aside-card-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.main-aside .main-aside-cards-list .main-aside-card div .main-aside-card-href .main-aside-card-publisher-wrapp {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.main-aside .main-aside-cards-list .main-aside-card div .main-aside-card-href .main-aside-card-publisher-wrapp .main-aside-card-publisher {
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
 }
 
 .main {

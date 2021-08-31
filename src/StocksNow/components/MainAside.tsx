@@ -24,61 +24,85 @@ const MainAside: React.FC<Props> = ({ stockQuery }) => {
     return(
         <div className="main-aside">
 
-                <ul className="main-aside-cards-list">
-                    <div className="main-aside-card">
-                        <div key={data?.news[0].uuid} >
-                            <a className="main-aside-card-href" href={data?.news[0].link}>
-                                <p style={{fontSize: '22px', fontWeight: 'bold'}}>{data?.news[0].title || 
-                                    <SkeletonTheme color="#202020" highlightColor="#444"> 
-                                        <Skeleton count={3} />
-                                        <Skeleton width={200} />
-                                    </SkeletonTheme>}
-                                </p>
-                                <p style={{marginTop: '15px'}}> { data?.news[0].publisher && <p>Publisher:</p> } {data?.news[0].publisher || 
-                                    <SkeletonTheme color="#202020" highlightColor="#444"> 
-                                        <Skeleton width={160} />
-                                    </SkeletonTheme>}
-                                </p>
-                            </a>
-                        </div>
-                    </div>
+            <div className="main-aside-cards-headline-wrapp">
+                <h1 className="main-aside-cards-headline">Most Recent:</h1>
+            </div>
 
-                    <div className="main-aside-card">
-                        <div key={data?.news[1].uuid} >
-                            <a className="main-aside-card-href" href={data?.news[1].link}>
-                                <p style={{fontSize: '22px', fontWeight: 'bold'}}>{data?.news[1].title || 
-                                    <SkeletonTheme color="#202020" highlightColor="#444"> 
-                                        <Skeleton count={3} />
-                                        <Skeleton width={200} />
-                                    </SkeletonTheme>}
-                                </p>
-                                <p style={{marginTop: '15px'}}> { data?.news[1].publisher && <p>Publisher:</p> } {data?.news[1].publisher || 
-                                    <SkeletonTheme color="#202020" highlightColor="#444"> 
-                                        <Skeleton width={160} />
-                                    </SkeletonTheme>}
-                                </p>
-                            </a>
-                        </div>
-                    </div>
+            <ul className="main-aside-cards-list">
 
-                    <div className="main-aside-card">
-                        <div key={data?.news[2].uuid} >
-                            <a className="main-aside-card-href" href={data?.news[2].link}>
-                                <p style={{fontSize: '22px', fontWeight: 'bold'}}>{data?.news[2].title || 
+                <div className="main-aside-card">
+                    <div key={data?.news[0].uuid} >
+                        <a className="main-aside-card-href" href={data?.news[0].link}>
+                            <div className="main-aside-card-title-wrapp">
+                                <h1 className="main-aside-card-title">{data?.news[0].title || 
                                     <SkeletonTheme color="#202020" highlightColor="#444"> 
                                         <Skeleton count={3} />
                                         <Skeleton width={200} />
                                     </SkeletonTheme>}
-                                </p>
-                                <p style={{marginTop: '15px'}}> { data?.news[2].publisher && <p>Publisher:</p> } {data?.news[2].publisher || 
+                                </h1>
+                            </div>
+
+                            <div className="main-aside-card-publisher-wrapp">
+                                <p className="main-aside-card-publisher">{ data?.news[0].publisher && <p>Publisher: {data?.news[0].publisher} </p> || 
                                     <SkeletonTheme color="#202020" highlightColor="#444"> 
                                         <Skeleton width={160} />
                                     </SkeletonTheme>}
-                                </p>
-                            </a>
-                        </div>
+                                </p> 
+                            </div>
+                        </a>
                     </div>
-                </ul>
+                </div>
+
+                <div className="main-aside-card">
+                    <div key={data?.news[1].uuid} >
+                        <a className="main-aside-card-href" href={data?.news[1].link}>
+                            <div className="main-aside-card-title-wrapp">
+                                <h1 className="main-aside-card-title">{data?.news[1].title || 
+                                    <SkeletonTheme color="#202020" highlightColor="#444"> 
+                                        <Skeleton count={3} />
+                                        <Skeleton width={200} />
+                                    </SkeletonTheme>}
+                                </h1>
+                            </div>
+
+                            <div className="main-aside-card-publisher-wrapp">
+                                <p className="main-aside-card-publisher">{ data?.news[1].publisher && <p>Publisher: {data?.news[1].publisher} </p> || 
+                                    <SkeletonTheme color="#202020" highlightColor="#444"> 
+                                        <Skeleton width={160} />
+                                    </SkeletonTheme>}
+                                </p> 
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div className="main-aside-card">
+                    <div key={data?.news[2].uuid} >
+                        <a className="main-aside-card-href" href={data?.news[2].link}>
+                            <div className="main-aside-card-title-wrapp">
+                                <h1 className="main-aside-card-title">{data?.news[2].title || 
+                                    <SkeletonTheme color="#202020" highlightColor="#444"> 
+                                        <Skeleton count={3} />
+                                        <Skeleton width={200} />
+                                    </SkeletonTheme>}
+                                </h1>
+                            </div>
+
+                            <div className="main-aside-card-publisher-wrapp">
+                                <p className="main-aside-card-publisher">{ data?.news[2].publisher && <p>Publisher: {data?.news[2].publisher} </p> || 
+                                    <SkeletonTheme color="#202020" highlightColor="#444"> 
+                                        <Skeleton width={160} />
+                                    </SkeletonTheme>}
+                                </p> 
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </ul>
+
+            <div className="main-aside-cards-footer-wrapp">
+                <p>see more below:</p>
+            </div>
 
         </div>
     );

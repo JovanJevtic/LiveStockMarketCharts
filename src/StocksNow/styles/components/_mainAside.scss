@@ -1,19 +1,47 @@
 .main-aside {
-    height: 80vh;
-    width: 500px;
+    height: 92vh;
+    width: 400px;
     margin-right: 3%;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
     // background: green;
+    flex-direction: column;
+
+    .main-aside-cards-headline-wrapp {
+        height: 8%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        h1 {
+            font-weight: bold;
+            font-size: 24px;
+            color: $black200;
+        }
+    }
+
+    .main-aside-cards-footer-wrapp {
+        width: 100%;
+        height: 12%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            font-weight: bold;
+            font-size: 20px;
+            color: $black300;
+        }
+    }
 
     .main-aside-cards-list {
-        height: 90%;
-        margin-top: 35px;
+        height: 80%;
         width: 100%;
+        min-width: 360px;
         display: flex;
         flex-direction: column;  
-        align-items: center;
+        align-items: flex-end;
+        // background: beige;
 
         .main-aside-card {
             flex: 1;
@@ -23,7 +51,7 @@
             border-radius: 5px;
             // background: green;
             min-height: 230px;
-            min-width: 300px;
+            // min-width: 300px;
 
             &:not(:first-child) {
                 margin-top: 20px;
@@ -38,15 +66,41 @@
                     height: 100%;
                     width: 100%;
                     display: block;
-                    padding: 10px;
+                    padding: 14px;
+                    display: flex;
+                    flex-direction: column;
 
                     &:hover {
                         cursor: pointer;
                         // background: $black700;
                         opacity: .4;
                         transition: .4s background;
-                        transform: scale(96%);
+                        transform: scale(98%);
                         transition: .3s transform;
+                    }
+
+                    .main-aside-card-title-wrapp {
+                        flex: 3;
+                        // background: green;
+                        
+                        .main-aside-card-title {
+                            font-size: 20px;
+                            font-weight: bold;
+                        }
+                    }
+
+                    .main-aside-card-publisher-wrapp {
+                        flex: 1;
+                        // background: beige;
+                        display: flex;
+                        align-items: flex-end;
+                        
+                        .main-aside-card-publisher {
+                            font-size: 14px;
+                            margin-bottom: 5px;
+                            font-weight: 500;
+                            font-family: 'Poppins', sans-serif;
+                        }
                     }
                 }
             }
