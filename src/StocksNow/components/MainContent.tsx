@@ -16,7 +16,9 @@ const MainContent: React.FC<Props> = () => {
 
     return(
         <div className="main-content">
-            <input name="stockQuery" value={stockQuery} onChange={onStockQueryChange} />
+            <div className="main-content-input-wrapp">
+                <input name="stockQuery" value={stockQuery} onChange={onStockQueryChange} />
+            </div>
             <StockChart stockQuery={stockQuery} />
             <StockNews stockQuery={stockQuery} />
         </div>

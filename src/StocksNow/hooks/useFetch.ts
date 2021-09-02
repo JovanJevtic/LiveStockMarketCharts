@@ -6,9 +6,21 @@ interface Error {
     errMessage: string;
 }
 
+interface NewsObject {
+    uuid: string;
+    title: string;
+    link: string;
+    summary: string;
+    publisher: string;
+    author: string;
+}
+
 interface PostObject {
     news: Array<StockNewsObject>;
     quotes: Array<QuotesObject>
+    items: {
+        result: Array<NewsObject>
+    };
 }
 
 interface QuotesObject {
@@ -29,6 +41,7 @@ interface ConfigTypes {
         interval?: string; 
         symbol?: string; 
         range?: string;
+        category?: string;
     };
     headers: {
         'x-rapidapi-key': string;

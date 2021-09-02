@@ -5,6 +5,40 @@
 
     .main-content {
         flex: 4;
+        display: flex;
+        flex-direction: column;
+        // background: purple;
+
+        .main-content-input-wrapp {
+            height: 12vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // background: red;
+
+            input {
+                height: 50px;
+                width: 80%;
+                margin-top: 30px;
+                border-radius: 5px;
+                background: $black800;
+                border: none;
+                color: #fff;
+                padding: 5px;
+                font-size: 18px;
+                font-weight: bold;
+                padding-left: 15px;
+                border: 1px solid $black700;
+                
+                &:focus {
+                    background: $black700;
+                    border: 1px solid $black800;
+                    outline: none;
+                    transition: .4s;
+                }
+            }
+        }
     }
 
     .main-aside {

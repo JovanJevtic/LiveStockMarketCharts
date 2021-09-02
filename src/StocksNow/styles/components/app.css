@@ -205,6 +205,50 @@ a {
   -webkit-box-flex: 4;
       -ms-flex: 4;
           flex: 4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main .main-content .main-content-input-wrapp {
+  height: 12vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main .main-content .main-content-input-wrapp input {
+  height: 50px;
+  width: 80%;
+  margin-top: 30px;
+  border-radius: 5px;
+  background: #0d1117;
+  border: none;
+  color: #fff;
+  padding: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 15px;
+  border: 1px solid #1A202C;
+}
+
+.main .main-content .main-content-input-wrapp input:focus {
+  background: #1A202C;
+  border: 1px solid #0d1117;
+  outline: none;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
 
 .main .main-aside {
