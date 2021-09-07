@@ -12,7 +12,7 @@ const StocksNow: React.FC<Props> = () => {
 
     return(
         <div className="app">
-            <Header />
+            {/* <Header /> */}
 
             <div className="content-wrapp">
                 <div className="content">

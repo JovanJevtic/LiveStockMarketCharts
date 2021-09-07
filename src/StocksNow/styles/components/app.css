@@ -41,13 +41,12 @@ a {
 
 .sidebar {
   height: 100%;
-  width: 300px;
-  background: #0d1117;
-  border-right: 1px solid #1A202C;
+  width: 400px;
+  border-right: 1px solid #0d1117;
 }
 
 .main-aside {
-  height: 92vh;
+  height: 100vh;
   width: 400px;
   margin-right: 3%;
   display: -webkit-box;
@@ -57,10 +56,11 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  border-left: 1px solid #0d1117;
 }
 
 .main-aside .main-aside-cards-headline-wrapp {
-  height: 8%;
+  height: 12%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -100,7 +100,7 @@ a {
 }
 
 .main-aside .main-aside-cards-list {
-  height: 80%;
+  height: 76%;
   width: 100%;
   min-width: 360px;
   display: -webkit-box;
@@ -121,7 +121,7 @@ a {
           flex: 1;
   width: 94%;
   background: #0d1117;
-  border: 1px solid #4A5568;
+  border: 1px solid #1A202C;
   border-radius: 5px;
   min-height: 230px;
 }
@@ -258,7 +258,7 @@ a {
 }
 
 .content-wrapp {
-  height: 93vh;
+  height: 100vh;
   width: 100%;
 }
 

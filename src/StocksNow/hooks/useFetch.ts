@@ -15,11 +15,29 @@ interface NewsObject {
     author: string;
 }
 
+interface QuoteObject {
+    close: Array<number>;
+    open: Array<number>;
+    high: Array<number>;
+    low: Array<number>;
+    volume: Array<number>;
+}
+
+interface ResultObject {
+    timestamp: Array<number>;
+    indicators: {
+        quote: Array<QuoteObject>
+    }
+}
+
 interface PostObject {
     news: Array<StockNewsObject>;
     quotes: Array<QuotesObject>
     items: {
         result: Array<NewsObject>
+    };
+    chart: {
+        result: Array<ResultObject>
     };
 }
 
