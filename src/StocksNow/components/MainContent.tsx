@@ -20,7 +20,7 @@ const MainContent: React.FC<Props> = () => {
                 <input name="stockQuery" value={stockQuery} onChange={onStockQueryChange} />
             </div>
             <StockChart stockQuery={stockQuery} />
-            <StockNews stockQuery={stockQuery} />
+            {/* <StockNews stockQuery={stockQuery} /> */}
         </div>
     );
 }
