@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
-
-import { ResponsiveLine } from '@nivo/line';
-import { isTypeOnlyImportOrExportDeclaration } from "typescript";
+import Chart, { DataObject } from "./Chart";
 
 interface Props {
     stockQuery: string;
@@ -22,7 +20,7 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
 
     const [previousClose, setPreviousClose] = useState<number>();
 
-    const [items, setItems] = useState<Array<Object>>([]);
+    const [items, setItems] = useState<Array<DataObject>>([]);
     
     const { data: symbolData, isLoading: isLoadingSymbol, error: symbolError } = useFetch(`https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete`, {
         json: true,
@@ -70,88 +68,22 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
 
         if (close && open && high && low && volume) {
           return {
-            x: timestamp,
-            y: close[index],
-            // open: open[index],
-            // high: open[index],
-            // low: low[index],
-            // volume: volume[index]
+            timestamp: timestamp,
+            close: close[index],
+            open: open[index],
+            high: open[index],
+            low: low[index],
+            volume: volume[index]
           }
         }
       });
 
-      setItems(dataItems as Array<Object>);
+      setItems(dataItems as Array<DataObject>);
     }, [timestamp, close, high, open, low, volume]);
-
-    const dats = [
-        {
-          "id": "japan",
-          "color": "hsl(233, 70%, 50%)",
-          "data": items
-        }
-    ];
 
     return(
         <div style={{height: '500px', width: '900px'}}>
-          { items && <ResponsiveLine 
-                data={dats} 
-                pointSize={10}
-                pointColor={{ theme: 'background' }}
-                pointBorderWidth={3}
-                pointBorderColor={{ from: 'serieColor' }}
-                pointLabelYOffset={-12}
-                useMesh={true}
-                margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-                xScale={{ type: 'point' }}
-                yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
-                yFormat=" >-.2f"
-                axisTop={null}
-                axisRight={null}
-                axisBottom={{
-                    tickSize: 5,
-                    tickPadding: 5,
-                    tickRotation: 0,
-                    legend: 'transportation',
-                    legendOffset: 36,
-                    legendPosition: 'middle'
-                }}
-                axisLeft={{
-                    tickSize: 5,
-                    tickPadding: 5,
-                    tickRotation: 0,
-                    legend: 'count',
-                    legendOffset: -40,
-                    legendPosition: 'middle'
-                }}
-                legends={[
-                    {
-                        anchor: 'bottom-right',
-                        direction: 'column',
-                        justify: false,
-                        translateX: 100,
-                        translateY: 0,
-                        itemsSpacing: 0,
-                        itemDirection: 'left-to-right',
-                        itemWidth: 80,
-                        itemHeight: 20,
-                        itemOpacity: 0.75,
-                        symbolSize: 12,
-                        symbolShape: 'circle',
-                        symbolBorderColor: 'rgba(255, 255, 255, .5)',
-                        effects: [
-                            {
-                                on: 'hover',
-                                style: {
-                                    itemBackground: 'rgba(255, 255, 255, .03)',
-                                    itemOpacity: 1
-                                }
-                            }
-                        ]
-                    }
-                ]}
-
-                colors={{ scheme: 'yellow_green' }}
-            /> }
+          { items && <Chart data={items} /> }
         </div>
     );
 }
