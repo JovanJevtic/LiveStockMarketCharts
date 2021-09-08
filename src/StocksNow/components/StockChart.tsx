@@ -48,8 +48,8 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
         },
         params: {
             symbol: symbol,
-            interval: '5m',
-            range: '1d',
+            interval: '50m',
+            range: '1m',
             region: 'US'
         }
     });
@@ -83,7 +83,7 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
 
     return(
         <div style={{height: '500px', width: '900px'}}>
-          { items && <Chart data={items} /> }
+          { items && <Chart height={700} ratio={1} width={1000} dateTimeFormat={''} data={items} /> }
         </div>
     );
 }
