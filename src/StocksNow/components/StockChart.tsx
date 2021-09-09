@@ -48,8 +48,8 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
         },
         params: {
             symbol: symbol,
-            interval: '50m',
-            range: '1m',
+            interval: '5m',
+            range: 'max',
             region: 'US'
         }
     });

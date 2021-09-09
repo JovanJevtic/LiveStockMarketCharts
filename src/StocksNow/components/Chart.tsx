@@ -45,7 +45,7 @@ export interface DataObject {
 }
 
 const Chart: React.FC<Props> = ({ data: initialData, dateTimeFormat="%d %b", height, ratio, width }) => {
-    const margin = { left: 0, right: 48, top: 0, bottom: 24 };
+    const margin = { left: 0, right: 48, top: 12, bottom: 24 };
     const pricesDisplayFormat = format(".2f");
     const xScaleProvider = discontinuousTimeScaleProviderBuilder().inputDateAccessor(
         (d: DataObject) => new Date(d.timestamp),
@@ -61,7 +61,7 @@ const Chart: React.FC<Props> = ({ data: initialData, dateTimeFormat="%d %b", hei
 
     const ema26 = ema()
         .id(2)
-        .options({ windowSize: 26 })
+        .options({ windowSize: 136 })
         .merge((d: any, c: any) => {
             d.ema26 = c;
         })
@@ -114,7 +114,8 @@ const Chart: React.FC<Props> = ({ data: initialData, dateTimeFormat="%d %b", hei
 
     return(
         <>
-        <ChartCanvas
+        <ChartCanvas 
+            clamp={false}
                 height={height}
                 ratio={ratio}
                 width={width}
@@ -131,8 +132,14 @@ const Chart: React.FC<Props> = ({ data: initialData, dateTimeFormat="%d %b", hei
                     <BarSeries fillStyle={volumeColor} yAccessor={volumeSeries} />
                 </Char>
                 <Char id={3} height={chartHeight} yExtents={candleChartExtents}>
-                    <XAxis showGridLines showTicks={false} showTickLabel={false} />
-                    <YAxis showGridLines tickFormat={pricesDisplayFormat} />
+                    <XAxis showGridLines={true} showTicks={false} showTickLabel={false} gridLinesStrokeStyle="#0d1117"
+                        strokeStyle="#4A5568"
+                    />
+                    <YAxis showGridLines={true} tickFormat={pricesDisplayFormat} gridLinesStrokeStyle="#0d1117"
+                        strokeStyle="#4A5568"
+                        tickLabelFill="#718096"
+                        tickStrokeStyle="#718096"
+                    />
                     <CandlestickSeries />
                     <LineSeries yAccessor={ema26.accessor()} strokeStyle={ema26.stroke()} />
                     <CurrentCoordinate yAccessor={ema26.accessor()} fillStyle={ema26.stroke()} />
@@ -175,7 +182,7 @@ const Chart: React.FC<Props> = ({ data: initialData, dateTimeFormat="%d %b", hei
                     origin={elderRayOrigin}
                     padding={{ top: 8, bottom: 8 }}
                 >
-                    <XAxis showGridLines gridLinesStrokeStyle="#e0e3eb" />
+                    <XAxis showGridLines gridLinesStrokeStyle="#222222" />
                     <YAxis ticks={4} tickFormat={pricesDisplayFormat} />
 
                     <MouseCoordinateX displayFormat={timeDisplayFormat} />
@@ -183,14 +190,14 @@ const Chart: React.FC<Props> = ({ data: initialData, dateTimeFormat="%d %b", hei
 
                     <ElderRaySeries yAccessor={elder.accessor()} />
 
-                    <SingleValueTooltip
+                    {/* <SingleValueTooltip
                         yAccessor={elder.accessor()}
                         yLabel="Elder Ray"
                         yDisplayFormat={(d: any) =>
                             `${pricesDisplayFormat(d.bullPower)}, ${pricesDisplayFormat(d.bearPower)}`
                         }
                         origin={[8, 16]}
-                    />
+                    /> */}
                 </Char>
                 <CrossHairCursor />
             </ChartCanvas>
