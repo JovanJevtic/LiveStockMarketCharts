@@ -49,7 +49,7 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
         params: {
             symbol: symbol,
             interval: '5m',
-            range: 'max',
+            range: '1d',
             region: 'US'
         }
     });
@@ -81,9 +81,13 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
       setItems(dataItems as Array<DataObject>);
     }, [timestamp, close, high, open, low, volume]);
 
+    useEffect(() => {
+      console.log('data:', data);
+    }, [data])
+
     return(
-        <div style={{height: '500px', width: '900px'}}>
-          { items && <Chart height={700} ratio={1} width={1000} dateTimeFormat={''} data={items} /> }
+        <div style={{height: '700px', width: '1000px',}}>
+          { items && <Chart height={700} ratio={5} width={1000} data={items} /> }
         </div>
     );
 }

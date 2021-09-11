@@ -26,6 +26,7 @@ import {
     withDeviceRatio,
     withSize,
 } from "react-financial-charts";
+import { useEffect } from 'react';
 
 interface Props {
     data: Array<DataObject>;
@@ -44,11 +45,11 @@ export interface DataObject {
     volume: number;
 }
 
-const Chart: React.FC<Props> = ({ data: initialData, dateTimeFormat="%d %b", height, ratio, width }) => {
+const Chart: React.FC<Props> = ({ data: initialData, dateTimeFormat="%c", height, ratio, width }) => {
     const margin = { left: 0, right: 48, top: 12, bottom: 24 };
     const pricesDisplayFormat = format(".2f");
     const xScaleProvider = discontinuousTimeScaleProviderBuilder().inputDateAccessor(
-        (d: DataObject) => new Date(d.timestamp),
+        (d: DataObject) => new Date(d.timestamp * 1000),
     );
 
     const ema12 = ema()
@@ -172,8 +173,8 @@ const Chart: React.FC<Props> = ({ data: initialData, dateTimeFormat="%d %b", hei
                         ]}
                     />
 
-                    <ZoomButtons />
-                    <OHLCTooltip origin={[8, 16]} />
+                    {/* <ZoomButtons /> */}
+                    <OHLCTooltip fontWeight={900} textFill="#A0AEC0" origin={[8, 16]} />
                 </Char>
                 <Char
                     id={4}
@@ -182,8 +183,16 @@ const Chart: React.FC<Props> = ({ data: initialData, dateTimeFormat="%d %b", hei
                     origin={elderRayOrigin}
                     padding={{ top: 8, bottom: 8 }}
                 >
-                    <XAxis showGridLines gridLinesStrokeStyle="#222222" />
-                    <YAxis ticks={4} tickFormat={pricesDisplayFormat} />
+                    <XAxis showGridLines
+                        strokeStyle="#4A5568"
+                        tickLabelFill="#718096"
+                        tickStrokeStyle="#718096"
+                        gridLinesStrokeStyle="#0d1117"
+                    />
+                    <YAxis ticks={4} tickFormat={pricesDisplayFormat} strokeStyle="#4A5568"
+                        tickLabelFill="#718096"
+                        tickStrokeStyle="#718096"
+                        gridLinesStrokeStyle="#0d1117" />
 
                     <MouseCoordinateX displayFormat={timeDisplayFormat} />
                     <MouseCoordinateY rectWidth={margin.right} displayFormat={pricesDisplayFormat} />
