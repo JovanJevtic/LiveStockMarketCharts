@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 import Chart, { DataObject } from "./Chart";
 
 interface Props {
@@ -8,6 +9,8 @@ interface Props {
 }
 
 const StockChart: React.FC<Props> = ({ stockQuery }) => {
+
+  const { windowHeight, windowWidth } = useWindowDimensions();
 
     const [symbol, setSymbol] = useState('');
 
@@ -49,7 +52,7 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
         params: {
             symbol: symbol,
             interval: '5m',
-            range: '1d',
+            range: '5d',
             region: 'US'
         }
     });
@@ -86,8 +89,11 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
     }, [data])
 
     return(
-        <div style={{height: '700px', width: '1000px',}}>
-          { items && <Chart height={700} ratio={5} width={1000} data={items} /> }
+        <div className="stockChart-wrapp">
+          { items &&
+            <div className="chart-wrapp">
+              <Chart height={windowHeight/1.4} ratio={5} width={windowWidth/1.8} data={items} />   
+            </div>}
         </div>
     );
 }

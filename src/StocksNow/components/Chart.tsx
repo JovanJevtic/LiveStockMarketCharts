@@ -174,7 +174,7 @@ const Chart: React.FC<Props> = ({ data: initialData, dateTimeFormat="%c", height
                     />
 
                     {/* <ZoomButtons /> */}
-                    <OHLCTooltip fontWeight={900} textFill="#A0AEC0" origin={[8, 16]} />
+                    <OHLCTooltip fontWeight={900} fontSize={14} textFill="#CBD5E0" origin={[8, 16]} />
                 </Char>
                 <Char
                     id={4}

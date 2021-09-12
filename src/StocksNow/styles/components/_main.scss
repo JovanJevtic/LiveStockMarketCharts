@@ -45,3 +45,18 @@
         flex: 1;
     }
 }
+
+.stockChart-wrapp {
+    height: 100%;
+    width: 100%;
+
+    .chart-wrapp {
+        margin-top: 10px;
+        height: 80%;
+        width: 100%;
+        // background: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
