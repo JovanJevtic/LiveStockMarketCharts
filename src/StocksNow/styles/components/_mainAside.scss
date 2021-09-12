@@ -37,7 +37,7 @@
     }
 
     .main-aside-cards-list {
-        height: 76%;
+        height: 65%;
         width: 100%;
         min-width: 360px;
         display: flex;
@@ -49,15 +49,13 @@
             flex: 1;
             width: 94%;
             background: $black800;
-            border: 1px solid $black700;
-            border-radius: 5px;
+            // border-left: 1px solid $black700;
+            // border-right: 1px solid $black700;
+            // border-radius: 5px;
             // background: green;
-            min-height: 230px;
+            min-height: 120px;
+            max-height: 150px;
             // min-width: 300px;
-
-            &:not(:first-child) {
-                margin-top: 20px;
-            }
 
             div {
                 // background: red;
@@ -74,11 +72,11 @@
 
                     &:hover {
                         cursor: pointer;
-                        // background: $black700;
-                        opacity: .4;
+                        background: $black700;
+                        // opacity: .4;
                         transition: .4s background;
-                        transform: scale(98%);
-                        transition: .3s transform;
+                        // transform: scale(98%);
+                        // transition: .3s background;
                     }
 
                     .main-aside-card-title-wrapp {
@@ -86,8 +84,8 @@
                         // background: green;
                         
                         .main-aside-card-title {
-                            font-size: 20px;
-                            font-weight: bold;
+                            font-size: 18px;
+                            font-weight: 400;
                         }
                     }
 
@@ -104,6 +102,53 @@
                             font-family: 'Poppins', sans-serif;
                         }
                     }
+                }
+            }
+        }
+
+        .main-aside-card:first-child {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            // border-top: 1px solid $black700;
+            min-height: 70px;
+            max-height: 70px;
+            border-bottom: 1px solid $black700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            p {
+                font-size: 18px;
+                font-weight: bold;
+            }
+        }
+
+        .main-aside-card:last-child {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            // border-bottom: 1px solid $black700;
+            min-height: 65px;
+            max-height: 65px;
+            border-top: 1px solid $black700;
+
+            a {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &:hover {
+                    background: $black700;
+                    border-bottom-left-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                }
+
+                p {
+                    font-weight: bold;
+                    // padding-left: 10px;
+                    font-size: 18px;
+                    color: $green400;
                 }
             }
         }

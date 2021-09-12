@@ -36,6 +36,10 @@ const MainAside: React.FC<Props> = ({ stockQuery }) => {
             <ul className="main-aside-cards-list">
 
                 <div className="main-aside-card">
+                    <p>Trending topics:</p>
+                </div>
+
+                <div className="main-aside-card">
                     <div key={data?.items.result[0].uuid} >
                         <a className="main-aside-card-href" href={data?.items.result[0].link}>
                             <div className="main-aside-card-title-wrapp">
@@ -102,6 +106,12 @@ const MainAside: React.FC<Props> = ({ stockQuery }) => {
                             </div>
                         </a>
                     </div>
+                </div>
+
+                <div className="main-aside-card">
+                    <a href="#">
+                        <p>See more</p>
+                    </a>
                 </div>
             </ul>
 

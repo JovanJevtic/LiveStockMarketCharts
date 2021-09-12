@@ -20,9 +20,11 @@
             font-weight: bold;
             font-family: 'Poppins', sans-serif;
             color: $green400;
+            background: -webkit-linear-gradient(45deg, #4ee28c, #06d683);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     }
-
     .sidebar-list-wrapp {
         height: 76%;
 
