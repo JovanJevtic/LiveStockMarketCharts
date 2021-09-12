@@ -22,15 +22,48 @@ const MainAside: React.FC<Props> = ({ stockQuery }) => {
         }
     });
 
-    useEffect(() => {
-        console.log(data?.items.result[2].author);
-    }, [data])
+    const { data: stockNews, isLoading: isStockNewsLoading, error: isStockNewsError } = useFetch(`https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete`, {
+        json: true,
+        gzip: true,
+        headers: {
+            "x-rapidapi-key": process.env.REACT_APP_X_RAPIDAPI_KEY as string,
+            "x-rapidapi-host": process.env.REACT_APP_X_RAPIDAPI_HOST as string
+        },
+        params: {
+            q: stockQuery,
+            region: 'US'
+        }
+    });
 
     return(
         <div className="main-aside">
 
-            <div className="main-aside-cards-headline-wrapp">
-                <h1 className="main-aside-cards-headline">Most Recent:</h1>
+            <div className="main-aside-cards-stockNews-wrapp">
+                <div className="stockNews-card">
+                    <a href={stockNews?.news[0].link}>
+                        <div className="stockNews-headline-wrapp">
+                            <p className="stockNews-headline"> { stockQuery } latest: </p>
+                        </div>
+                        <div className="stockNews">
+                            <div className="stockNews-title-wrapp">
+                                <h1 className="stockNews-title">{stockNews?.news[0].title || 
+                                    <SkeletonTheme color="#202020" highlightColor="#444"> 
+                                        <Skeleton count={3} />
+                                        <Skeleton width={200} />
+                                    </SkeletonTheme>}
+                                </h1>
+                            </div>
+
+                            <div className="stockNews-publisher-wrapp">
+                                <p className="stockNews-publisher">{ stockNews?.news[0].publisher && <p>Publisher: {stockNews?.news[0].publisher} </p> || 
+                                    <SkeletonTheme color="#202020" highlightColor="#444"> 
+                                        <Skeleton width={160} />
+                                    </SkeletonTheme>}
+                                </p> 
+                            </div>
+                        </div>  
+                    </a>
+                </div>
             </div>
 
             <ul className="main-aside-cards-list">
