@@ -116,7 +116,7 @@ a {
 }
 
 .main-aside .main-aside-cards-stockNews-wrapp .stockNews-card {
-  height: 90%;
+  height: 80%;
   width: 94%;
   background: #0d1117;
   border-radius: 10px;
@@ -146,6 +146,7 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border-bottom: 1px solid #1A202C;
 }
 
 .main-aside .main-aside-cards-stockNews-wrapp .stockNews-card a .stockNews-headline-wrapp p {
@@ -166,12 +167,25 @@ a {
 }
 
 .main-aside .main-aside-cards-stockNews-wrapp .stockNews-card a .stockNews .stockNews-title-wrapp {
-  height: 80%;
+  height: 70%;
   width: 100%;
 }
 
 .main-aside .main-aside-cards-stockNews-wrapp .stockNews-card a .stockNews .stockNews-title-wrapp .stockNews-title {
-  font-size: 16px;
+  font-size: 18px;
+  padding-left: 15px;
+  padding-top: 15px;
+}
+
+.main-aside .main-aside-cards-stockNews-wrapp .stockNews-card a .stockNews .stockNews-publisher-wrapp {
+  height: 30%;
+  width: 100%;
+}
+
+.main-aside .main-aside-cards-stockNews-wrapp .stockNews-card a .stockNews .stockNews-publisher-wrapp .stockNews-publisher {
+  font-size: 12px;
+  padding-left: 15px;
+  padding-top: 15px;
 }
 
 .main-aside .main-aside-cards-footer-wrapp {
@@ -196,7 +210,7 @@ a {
 }
 
 .main-aside .main-aside-cards-list {
-  height: 65%;
+  height: 60%;
   width: 100%;
   min-width: 360px;
   display: -webkit-box;
@@ -254,7 +268,7 @@ a {
 }
 
 .main-aside .main-aside-cards-list .main-aside-card div .main-aside-card-href .main-aside-card-title-wrapp .main-aside-card-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
 }
 
@@ -271,7 +285,7 @@ a {
 }
 
 .main-aside .main-aside-cards-list .main-aside-card div .main-aside-card-href .main-aside-card-publisher-wrapp .main-aside-card-publisher {
-  font-size: 14px;
+  font-size: 12px;
   margin-bottom: 5px;
   font-weight: 500;
   font-family: 'Poppins', sans-serif;

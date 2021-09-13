@@ -16,7 +16,7 @@
         width: 100%;
 
         .stockNews-card {
-            height: 90%;
+            height: 80%;
             width: 94%;
             background: $black800;
             border-radius: 10px;
@@ -33,6 +33,7 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    border-bottom: 1px solid $black700;
 
                     p {
                         font-size: 16px;
@@ -47,11 +48,24 @@
                     flex-direction: column;
 
                     .stockNews-title-wrapp {
-                        height: 80%;
+                        height: 70%;
                         width: 100%;
                         
                         .stockNews-title { 
-                            font-size: 16px;
+                            font-size: 18px;
+                            padding-left: 15px;
+                            padding-top: 15px;
+                        }
+                    }
+
+                    .stockNews-publisher-wrapp {
+                        height: 30%;
+                        width: 100%;
+                        
+                        .stockNews-publisher { 
+                            font-size: 12px;
+                            padding-left: 15px;
+                            padding-top: 15px;
                         }
                     }
                 }
@@ -75,7 +89,7 @@
     }
 
     .main-aside-cards-list {
-        height: 65%;
+        height: 60%;
         width: 100%;
         min-width: 360px;
         display: flex;
@@ -122,7 +136,7 @@
                         // background: green;
                         
                         .main-aside-card-title {
-                            font-size: 18px;
+                            font-size: 16px;
                             font-weight: 400;
                         }
                     }
@@ -134,7 +148,7 @@
                         align-items: flex-end;
                         
                         .main-aside-card-publisher {
-                            font-size: 14px;
+                            font-size: 12px;
                             margin-bottom: 5px;
                             font-weight: 500;
                             font-family: 'Poppins', sans-serif;
