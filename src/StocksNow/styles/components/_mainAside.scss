@@ -21,6 +21,19 @@
             background: $black800;
             border-radius: 10px;
 
+            &:hover {
+                cursor: pointer;
+                // background: $black700;
+                opacity: .4;
+                background: $black700;
+                // opacity: .4;
+                transition: .4s background;
+                transform: scale(98%);
+                transition: .3s transform;
+                // transform: scale(98%);
+                // transition: .3s background;
+            }
+
             a {
                 height: 100%;
                 width: 100%;
@@ -200,7 +213,7 @@
                     font-weight: bold;
                     // padding-left: 10px;
                     font-size: 18px;
-                    color: $green400;
+                    color: $cta;
                 }
             }
         }

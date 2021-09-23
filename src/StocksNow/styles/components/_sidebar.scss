@@ -9,25 +9,61 @@
 
     .sidebar-heading-wrapp {
         height: 12%;
-        width: 100%;
+        width: 90%;
         // background: red;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
 
         .sidebar-heading {
             font-size: 28px;
             font-weight: bold;
             font-family: 'Poppins', sans-serif;
-            color: $green400;
-            background: -webkit-linear-gradient(45deg, #4ee28c, #06d683);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: $cta;
+            padding-left: 15px;
+            // background: -webkit-linear-gradient(30deg, $cta, $red500);
+            // -webkit-background-clip: text;
+            // -webkit-text-fill-color: transparent;
         }
     }
     .sidebar-list-wrapp {
         height: 76%;
+        width: 90%;
 
+        ul {
+            height: 100%;
+            width: 100%;
+            // background: red;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+
+            li {
+                flex: 1;
+                
+                div {
+                    height: 80%;
+                    width: 90%;
+                    // background: red;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    border-radius: 25px;
+                    font-weight: bold;
+                    font-size: 18px;
+                    cursor: pointer;
+
+                    p { 
+                        padding-left: 15px;
+                    }
+
+                    &:hover {
+                        transition: .4s;
+                        background: $black700;
+                    }
+                }
+            }
+        }
     }
 
     .sidebar-footer-wrapp {
