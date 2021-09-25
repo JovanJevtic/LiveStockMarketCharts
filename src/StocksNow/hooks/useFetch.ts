@@ -96,7 +96,7 @@ export const useFetch = (uri: string, config: ConfigTypes) => {
         return () => {
             source.cancel();
         }
-    }, [config.params.q, config.params.symbol]); 
+    }, [config.params.q, config.params.symbol, config.params.range]); 
 
     return { data, isLoading, error };
 }

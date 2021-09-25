@@ -8,11 +8,17 @@ interface Props {
     stockQuery: string;
 }
 
+interface Range {
+  range: '1d' | '5d' | '1mo' | '3mo' | '6mo' | '1y' | '2y' | '5y' | 'max';
+}
+
 const StockChart: React.FC<Props> = ({ stockQuery }) => {
 
   const { windowHeight, windowWidth } = useWindowDimensions();
 
     const [symbol, setSymbol] = useState('');
+    // const [range, setRange] = useState<Range>({range: '1d'});
+    const [range, setRange] = useState<string>('1d');
 
     const [timestamp, setTimestamp] = useState<Array<number> | undefined >([]);
     const [close, setClose] = useState<Array<number> | undefined>([]);
@@ -52,7 +58,7 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
         params: {
             symbol: symbol,
             interval: '5m',
-            range: '5d',
+            range: range,
             region: 'US'
         }
     });
@@ -86,17 +92,16 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
 
     return(
         <div className="stockChart-wrapp">
-          { items &&
             <div>
               <div className="chart-nav">
                 <ul>
                   <li>
-                    <div>
+                    <div onClick={() => setRange('1d')}>
                         <p>1d</p>
                     </div> 
                   </li>
                   <li>
-                      <div>
+                      <div onClick={() => setRange('5d')}>
                           <p>5d</p>    
                       </div> 
                   </li>
@@ -138,10 +143,10 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
                 </ul>
               </div>
               <div className="chart-wrapp">
-                <Chart height={windowHeight/1.4} ratio={5} width={windowWidth/1.8} data={items} />   
+                {items &&  <Chart height={windowHeight/1.4} ratio={5} width={windowWidth/1.8} data={items} />   }
               </div>
             </div>
-            }
+            
         </div>
     );
 }
