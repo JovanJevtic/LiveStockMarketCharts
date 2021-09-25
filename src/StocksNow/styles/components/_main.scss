@@ -19,7 +19,7 @@
 
             input {
                 height: 50px;
-                width: 80%;
+                width: 92%;
                 // margin-top: 30px;
                 border-radius: 5px;
                 background: $black800;
@@ -49,9 +49,52 @@
 .stockChart-wrapp {
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .chart-nav {
+        height: 10vh;
+        width: 92%;
+        margin: 0 auto;
+
+        ul {
+            height: 100%;
+            width: 100%;
+            list-style: none;
+            display: flex;
+
+            li {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                div {
+                    height: 45%;
+                    width: 70%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: $black800;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    
+                    &:hover {
+                        background: $black700;
+                        transition: .4s;
+                    }
+
+                    p {
+                        font-size: 15px;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
 
     .chart-wrapp {
-        margin-top: 10px;
+        margin-bottom: 10vh;
         height: 80%;
         width: 100%;
         // background: red;

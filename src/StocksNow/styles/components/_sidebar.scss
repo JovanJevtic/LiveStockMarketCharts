@@ -21,9 +21,9 @@
             font-family: 'Poppins', sans-serif;
             color: $cta;
             padding-left: 15px;
-            // background: -webkit-linear-gradient(30deg, $cta, $red500);
-            // -webkit-background-clip: text;
-            // -webkit-text-fill-color: transparent;
+            background: -webkit-linear-gradient(30deg, $cta, $blue300);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     }
     .sidebar-list-wrapp {

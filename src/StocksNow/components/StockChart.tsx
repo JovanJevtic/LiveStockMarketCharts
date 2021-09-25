@@ -84,16 +84,64 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
       setItems(dataItems as Array<DataObject>);
     }, [timestamp, close, high, open, low, volume]);
 
-    useEffect(() => {
-      console.log('data:', data);
-    }, [data])
-
     return(
         <div className="stockChart-wrapp">
           { items &&
-            <div className="chart-wrapp">
-              <Chart height={windowHeight/1.4} ratio={5} width={windowWidth/1.8} data={items} />   
-            </div>}
+            <div>
+              <div className="chart-nav">
+                <ul>
+                  <li>
+                    <div>
+                        <p>1d</p>
+                    </div> 
+                  </li>
+                  <li>
+                      <div>
+                          <p>5d</p>    
+                      </div> 
+                  </li>
+                  <li>
+                      <div>
+                          <p>1mo</p>    
+                      </div> 
+                  </li>
+                  <li>
+                      <div>
+                          <p>3mo</p>
+                      </div> 
+                  </li>
+                  <li>
+                      <div>
+                          <p>6mo</p>
+                      </div> 
+                  </li>
+                  <li>
+                      <div>
+                          <p>1y</p>
+                      </div> 
+                  </li>
+                    <li>
+                      <div>
+                          <p>2y</p>    
+                      </div> 
+                  </li>
+                  <li>
+                      <div>
+                          <p>5y</p>    
+                      </div> 
+                  </li>
+                  <li>
+                      <div>
+                          <p>max</p>    
+                      </div> 
+                  </li>
+                </ul>
+              </div>
+              <div className="chart-wrapp">
+                <Chart height={windowHeight/1.4} ratio={5} width={windowWidth/1.8} data={items} />   
+              </div>
+            </div>
+            }
         </div>
     );
 }
