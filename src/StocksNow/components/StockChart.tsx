@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { createLanguageServiceSourceFile } from "typescript";
 import { useFetch } from "../hooks/useFetch";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import Chart, { DataObject } from "./Chart";
@@ -8,17 +9,14 @@ interface Props {
     stockQuery: string;
 }
 
-interface Range {
-  range: '1d' | '5d' | '1mo' | '3mo' | '6mo' | '1y' | '2y' | '5y' | 'max';
-}
-
 const StockChart: React.FC<Props> = ({ stockQuery }) => {
 
   const { windowHeight, windowWidth } = useWindowDimensions();
 
     const [symbol, setSymbol] = useState('');
     // const [range, setRange] = useState<Range>({range: '1d'});
-    const [range, setRange] = useState<string>('1d');
+    const [range, setRange] = useState<string>('1mo');
+    const [interval, setInterval] = useState<string>('5m');
 
     const [timestamp, setTimestamp] = useState<Array<number> | undefined >([]);
     const [close, setClose] = useState<Array<number> | undefined>([]);
@@ -57,19 +55,21 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
         },
         params: {
             symbol: symbol,
-            interval: '5m',
+            interval: interval,
             range: range,
             region: 'US'
         }
     });
 
     useEffect(() => {
-        setTimestamp(data?.chart.result[0].timestamp);
-        setClose(data?.chart.result[0].indicators.quote[0].close);
-        setLow(data?.chart.result[0].indicators.quote[0].low);
-        setOpen(data?.chart.result[0].indicators.quote[0].open);
-        setHigh(data?.chart.result[0].indicators.quote[0].high);
-        setVolume(data?.chart.result[0].indicators.quote[0].volume);
+      if (data) {
+          setTimestamp(data?.chart?.result[0]?.timestamp);
+          setClose(data?.chart?.result[0]?.indicators?.quote[0]?.close);
+          setLow(data?.chart?.result[0]?.indicators?.quote[0]?.low);
+          setOpen(data?.chart?.result[0]?.indicators?.quote[0]?.open);
+          setHigh(data?.chart?.result[0]?.indicators?.quote[0]?.high);
+          setVolume(data?.chart?.result[0]?.indicators?.quote[0]?.volume); 
+      }
     }, [data]);
 
     useEffect(() => {
@@ -90,53 +90,64 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
       setItems(dataItems as Array<DataObject>);
     }, [timestamp, close, high, open, low, volume]);
 
+    const rangeIntervalOnClick = (range: string, interval: string) => {
+      setRange(range);
+      setInterval(interval);
+      setTimestamp([0]);
+      setClose([0]);
+      setLow([0]);
+      setOpen([0]);
+      setHigh([0]);
+      setVolume([0]); 
+    }
+
     return(
         <div className="stockChart-wrapp">
             <div>
               <div className="chart-nav">
                 <ul>
                   <li>
-                    <div onClick={() => setRange('1d')}>
+                    <div onClick={() => rangeIntervalOnClick('1d', '5m')}>
                         <p>1d</p>
                     </div> 
                   </li>
                   <li>
-                      <div onClick={() => setRange('5d')}>
+                      <div onClick={() => rangeIntervalOnClick('5d', '5m')}>
                           <p>5d</p>    
                       </div> 
                   </li>
                   <li>
-                      <div>
+                      <div onClick={() => rangeIntervalOnClick('1mo', '5m')}> 
                           <p>1mo</p>    
                       </div> 
                   </li>
                   <li>
-                      <div>
+                      <div onClick={() => rangeIntervalOnClick('3mo', '60m')}>
                           <p>3mo</p>
                       </div> 
                   </li>
                   <li>
-                      <div>
+                      <div onClick={() => rangeIntervalOnClick('6mo', '60m')}> 
                           <p>6mo</p>
                       </div> 
                   </li>
                   <li>
-                      <div>
+                      <div onClick={() => rangeIntervalOnClick('1y', '60m')}>
                           <p>1y</p>
                       </div> 
                   </li>
                     <li>
-                      <div>
+                      <div onClick={() => rangeIntervalOnClick('2y', '60m')}>
                           <p>2y</p>    
                       </div> 
                   </li>
                   <li>
-                      <div>
+                      <div onClick={() => rangeIntervalOnClick('5y', '1d')}>
                           <p>5y</p>    
                       </div> 
                   </li>
                   <li>
-                      <div>
+                      <div onClick={() => rangeIntervalOnClick('max', '1d')}>
                           <p>max</p>    
                       </div> 
                   </li>
