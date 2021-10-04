@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { createLanguageServiceSourceFile } from "typescript";
 import { useFetch } from "../hooks/useFetch";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import Chart, { DataObject } from "./Chart";
+import ChartNavBtn from "./ChartNavBtn";
 
 interface Props {
     stockQuery: string;
@@ -11,10 +12,11 @@ interface Props {
 
 const StockChart: React.FC<Props> = ({ stockQuery }) => {
 
+  const btnRef = useRef<Array<HTMLDivElement | null>> ([]);
   const { windowHeight, windowWidth } = useWindowDimensions();
 
     const [symbol, setSymbol] = useState('');
-    // const [range, setRange] = useState<Range>({range: '1d'});
+    const [ranges, setRanges] = useState<Array<string>>(['1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '5y', 'max']);
     const [range, setRange] = useState<string>('1mo');
     const [interval, setInterval] = useState<string>('5m');
 
@@ -90,15 +92,15 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
       setItems(dataItems as Array<DataObject>);
     }, [timestamp, close, high, open, low, volume]);
 
-    const rangeIntervalOnClick = (range: string, interval: string) => {
+    const rangeIntervalOnClick = (range: string, interval: string, num: number) => {
       setRange(range);
       setInterval(interval);
       setTimestamp([0]);
       setClose([0]);
       setLow([0]);
       setOpen([0]);
-      setHigh([0]);
-      setVolume([0]); 
+      setHigh([0]); 
+      setVolume([0]);
     }
 
     return(
@@ -107,47 +109,50 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
               <div className="chart-nav">
                 <ul>
                   <li>
-                    <div onClick={() => rangeIntervalOnClick('1d', '5m')}>
+                    <div 
+                      onClick={() => rangeIntervalOnClick('1d', '5m', 0)}
+                      ref={el => btnRef.current[0] = el} 
+                    >
                         <p>1d</p>
                     </div> 
                   </li>
                   <li>
-                      <div onClick={() => rangeIntervalOnClick('5d', '5m')}>
+                      <div ref={el => btnRef.current[1] = el} onClick={() => rangeIntervalOnClick('5d', '5m', 1)}>
                           <p>5d</p>    
                       </div> 
                   </li>
                   <li>
-                      <div onClick={() => rangeIntervalOnClick('1mo', '5m')}> 
+                      <div ref={el => btnRef.current[2] = el} onClick={() => rangeIntervalOnClick('1mo', '5m', 2)}> 
                           <p>1mo</p>    
                       </div> 
                   </li>
                   <li>
-                      <div onClick={() => rangeIntervalOnClick('3mo', '60m')}>
+                      <div ref={el => btnRef.current[3] = el} onClick={() => rangeIntervalOnClick('3mo', '60m', 3)}>
                           <p>3mo</p>
                       </div> 
                   </li>
                   <li>
-                      <div onClick={() => rangeIntervalOnClick('6mo', '60m')}> 
+                      <div ref={el => btnRef.current[4] = el} onClick={() => rangeIntervalOnClick('6mo', '60m', 4)}> 
                           <p>6mo</p>
                       </div> 
                   </li>
                   <li>
-                      <div onClick={() => rangeIntervalOnClick('1y', '60m')}>
+                      <div ref={el => btnRef.current[5] = el} onClick={() => rangeIntervalOnClick('1y', '60m', 5)}>
                           <p>1y</p>
                       </div> 
                   </li>
                     <li>
-                      <div onClick={() => rangeIntervalOnClick('2y', '60m')}>
+                      <div ref={el => btnRef.current[6] = el} onClick={() => rangeIntervalOnClick('2y', '60m', 6)}>
                           <p>2y</p>    
                       </div> 
                   </li>
                   <li>
-                      <div onClick={() => rangeIntervalOnClick('5y', '1d')}>
+                      <div ref={el => btnRef.current[7] = el} onClick={() => rangeIntervalOnClick('5y', '1d', 7)}>
                           <p>5y</p>    
                       </div> 
                   </li>
                   <li>
-                      <div onClick={() => rangeIntervalOnClick('max', '1d')}>
+                      <div ref={el => btnRef.current[8] = el} onClick={() => rangeIntervalOnClick('max', '1d', 8)}>
                           <p>max</p>    
                       </div> 
                   </li>

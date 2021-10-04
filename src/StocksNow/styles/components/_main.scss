@@ -78,7 +78,7 @@
                     background: $black800;
                     border-radius: 25px;
                     cursor: pointer;
-                    
+
                     &:hover {
                         background: $black700;
                         transition: .4s;
@@ -88,6 +88,10 @@
                         font-size: 14px;
                         font-weight: bold;
                     }
+                }
+
+                .active {
+                    background: red;
                 }
             }
         }

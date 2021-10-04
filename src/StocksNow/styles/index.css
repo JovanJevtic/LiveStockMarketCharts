@@ -558,6 +558,10 @@ a {
   font-weight: bold;
 }
 
+.stockChart-wrapp .chart-nav ul li .active {
+  background: red;
+}
+
 .stockChart-wrapp .chart-wrapp {
   margin-bottom: 10vh;
   height: 80%;
