@@ -1,4 +1,4 @@
-# Live Stock Market Charts
+# Live Stock Market Charts - MarketCap
 
 This is the live display of stock market in candlestick chart format. 
 It is using Yahoo Finance API for accessing latest data and news.
