@@ -23,6 +23,21 @@ const Sidebar: React.FC<Props> = () => {
                             <p>Quotes</p>
                         </div>
                     </li>
+                    <li>
+                        <div>
+                            <p>Holders</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <p>Analysis</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <p>Statistics</p>
+                        </div>
+                    </li>
                 </ul>
 
             </div>
