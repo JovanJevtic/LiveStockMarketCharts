@@ -1,13 +1,10 @@
-import React, { FunctionComponent } from "react";
-import { Route, RouteProps } from "react-router";
-import { withRouter } from "react-router-dom";
+import React, { FunctionComponent } from 'react';
+import { Route, RouteProps } from 'react-router';
+import { withRouter } from 'react-router-dom';
 
-const PublicRoute: FunctionComponent<RouteProps<string>> = ({
-  component,
-  ...props
-}) => {
+const PublicRoute: FunctionComponent<RouteProps<string>> = ({ component, ...props }) => {
   if (!component) {
-    console.error("Component cannot be null");
+    console.error('Component cannot be null');
     return null;
   }
 

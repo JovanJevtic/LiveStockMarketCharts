@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 interface Error {
   isError: boolean;
@@ -62,8 +62,8 @@ interface ConfigTypes {
     category?: string;
   };
   headers: {
-    "x-rapidapi-key": string;
-    "x-rapidapi-host": string;
+    'x-rapidapi-key': string;
+    'x-rapidapi-host': string;
   };
   json: boolean;
   gzip: boolean;
@@ -72,7 +72,7 @@ interface ConfigTypes {
 export const useFetch = (uri: string, config: ConfigTypes) => {
   const [data, setData] = useState<PostObject>();
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
-  const [error, setError] = useState<Error>({ isError: false, errMessage: "" });
+  const [error, setError] = useState<Error>({ isError: false, errMessage: '' });
 
   useEffect(() => {
     setIsLoading(true);
@@ -81,7 +81,7 @@ export const useFetch = (uri: string, config: ConfigTypes) => {
 
     async function fetchData() {
       try {
-        let res = await axios.get(uri, {
+        const res = await axios.get(uri, {
           cancelToken: source.token,
           ...config,
         });

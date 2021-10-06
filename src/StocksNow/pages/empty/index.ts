@@ -1,3 +1,3 @@
-import EmptyPage from "./EmptyPage";
+import EmptyPage from './EmptyPage';
 
 export { EmptyPage };
