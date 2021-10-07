@@ -94,15 +94,17 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
     setItems(dataItems as Array<DataObject>);
   }, [timestamp, close, high, open, low, volume]);
 
-  const rangeIntervalOnClick = (range: string, interval: string, num: number) => {
-    setRange(range);
-    setInterval(interval);
-    setTimestamp([0]);
-    setClose([0]);
-    setLow([0]);
-    setOpen([0]);
-    setHigh([0]);
-    setVolume([0]);
+  const rangeIntervalOnClick = (currRange: string, interval: string, num: number) => {
+    if (currRange !== range) {
+      setRange(currRange);
+      setInterval(interval);
+      setTimestamp([0]);
+      setClose([0]);
+      setLow([0]);
+      setOpen([0]);
+      setHigh([0]);
+      setVolume([0]);
+      }
   };
 
   return (
