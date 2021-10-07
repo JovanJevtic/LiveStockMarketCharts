@@ -1,6 +1,6 @@
-import React from "react";
-import { format } from "d3-format";
-import { timeFormat } from "d3-time-format";
+import React from 'react';
+import { format } from 'd3-format';
+import { timeFormat } from 'd3-time-format';
 import {
   elderRay,
   ema,
@@ -25,8 +25,8 @@ import {
   ZoomButtons,
   withDeviceRatio,
   withSize,
-} from "react-financial-charts";
-import { useEffect } from "react";
+} from 'react-financial-charts';
+import { useEffect } from 'react';
 
 interface Props {
   data: Array<DataObject>;
@@ -45,19 +45,10 @@ export interface DataObject {
   volume: number;
 }
 
-const Chart: React.FC<Props> = ({
-  data: initialData,
-  dateTimeFormat = "%c",
-  height,
-  ratio,
-  width,
-}) => {
+const Chart: React.FC<Props> = ({ data: initialData, dateTimeFormat = '%c', height, ratio, width }) => {
   const margin = { left: 0, right: 48, top: 12, bottom: 24 };
-  const pricesDisplayFormat = format(".2f");
-  const xScaleProvider =
-    discontinuousTimeScaleProviderBuilder().inputDateAccessor(
-      (d: DataObject) => new Date(d.timestamp * 1000)
-    );
+  const pricesDisplayFormat = format('.2f');
+  const xScaleProvider = discontinuousTimeScaleProviderBuilder().inputDateAccessor((d: DataObject) => new Date(d.timestamp * 1000));
 
   const ema12 = ema()
     .id(1)
@@ -79,8 +70,7 @@ const Chart: React.FC<Props> = ({
 
   const calculatedData = elder(ema26(ema12(initialData)));
 
-  const { data, xScale, xAccessor, displayXAccessor } =
-    xScaleProvider(calculatedData);
+  const { data, xScale, xAccessor, displayXAccessor } = xScaleProvider(calculatedData);
 
   const max = xAccessor(data[data.length - 1]);
   const min = xAccessor(data[Math.max(0, data.length - 100)]);
@@ -91,10 +81,7 @@ const Chart: React.FC<Props> = ({
   const elderRayHeight = 100;
   const elderRayOrigin = (_: number, h: number) => [0, h - elderRayHeight];
   const barChartHeight = gridHeight / 4;
-  const barChartOrigin = (_: number, h: number) => [
-    0,
-    h - barChartHeight - elderRayHeight,
-  ];
+  const barChartOrigin = (_: number, h: number) => [0, h - barChartHeight - elderRayHeight];
   const chartHeight = gridHeight - elderRayHeight;
 
   const timeDisplayFormat = timeFormat(dateTimeFormat);
@@ -112,9 +99,7 @@ const Chart: React.FC<Props> = ({
   };
 
   const volumeColor = (data: DataObject) => {
-    return data.close > data.open
-      ? "rgba(38, 166, 154, 0.3)"
-      : "rgba(239, 83, 80, 0.3)";
+    return data.close > data.open ? 'rgba(38, 166, 154, 0.3)' : 'rgba(239, 83, 80, 0.3)';
   };
 
   const volumeSeries = (data: DataObject) => {
@@ -122,7 +107,7 @@ const Chart: React.FC<Props> = ({
   };
 
   const openCloseColor = (data: DataObject) => {
-    return data.close > data.open ? "#26a69a" : "#ef5350";
+    return data.close > data.open ? '#26a69a' : '#ef5350';
   };
 
   return (
@@ -135,59 +120,33 @@ const Chart: React.FC<Props> = ({
         margin={margin}
         data={data}
         displayXAccessor={displayXAccessor}
-        seriesName="Data"
+        seriesName='Data'
         xScale={xScale}
         xAccessor={xAccessor}
         xExtents={xExtents}
         zoomAnchor={lastVisibleItemBasedZoomAnchor}
       >
-        <Char
-          id={2}
-          height={barChartHeight}
-          origin={barChartOrigin}
-          yExtents={barChartExtents}
-        >
+        <Char id={2} height={barChartHeight} origin={barChartOrigin} yExtents={barChartExtents}>
           <BarSeries fillStyle={volumeColor} yAccessor={volumeSeries} />
         </Char>
         <Char id={3} height={chartHeight} yExtents={candleChartExtents}>
-          <XAxis
-            showGridLines={true}
-            showTicks={false}
-            showTickLabel={false}
-            gridLinesStrokeStyle="#0d1117"
-            strokeStyle="#4A5568"
-          />
+          <XAxis showGridLines={true} showTicks={false} showTickLabel={false} gridLinesStrokeStyle='#0d1117' strokeStyle='#4A5568' />
           <YAxis
             showGridLines={true}
             tickFormat={pricesDisplayFormat}
-            gridLinesStrokeStyle="#0d1117"
-            strokeStyle="#4A5568"
-            tickLabelFill="#718096"
-            tickStrokeStyle="#718096"
+            gridLinesStrokeStyle='#0d1117'
+            strokeStyle='#4A5568'
+            tickLabelFill='#718096'
+            tickStrokeStyle='#718096'
           />
           <CandlestickSeries />
-          <LineSeries
-            yAccessor={ema26.accessor()}
-            strokeStyle={ema26.stroke()}
-          />
-          <CurrentCoordinate
-            yAccessor={ema26.accessor()}
-            fillStyle={ema26.stroke()}
-          />
-          <LineSeries
-            yAccessor={ema12.accessor()}
-            strokeStyle={ema12.stroke()}
-          />
-          <CurrentCoordinate
-            yAccessor={ema12.accessor()}
-            fillStyle={ema12.stroke()}
-          />
-          <MouseCoordinateY
-            rectWidth={margin.right}
-            displayFormat={pricesDisplayFormat}
-          />
+          <LineSeries yAccessor={ema26.accessor()} strokeStyle={ema26.stroke()} />
+          <CurrentCoordinate yAccessor={ema26.accessor()} fillStyle={ema26.stroke()} />
+          <LineSeries yAccessor={ema12.accessor()} strokeStyle={ema12.stroke()} />
+          <CurrentCoordinate yAccessor={ema12.accessor()} fillStyle={ema12.stroke()} />
+          <MouseCoordinateY rectWidth={margin.right} displayFormat={pricesDisplayFormat} />
           <EdgeIndicator
-            itemType="last"
+            itemType='last'
             rectWidth={margin.right}
             fill={openCloseColor}
             lineStroke={openCloseColor}
@@ -199,13 +158,13 @@ const Chart: React.FC<Props> = ({
             options={[
               {
                 yAccessor: ema26.accessor(),
-                type: "EMA",
+                type: 'EMA',
                 stroke: ema26.stroke(),
                 windowSize: ema26.options().windowSize,
               },
               {
                 yAccessor: ema12.accessor(),
-                type: "EMA",
+                type: 'EMA',
                 stroke: ema12.stroke(),
                 windowSize: ema12.options().windowSize,
               },
@@ -213,41 +172,21 @@ const Chart: React.FC<Props> = ({
           />
 
           {/* <ZoomButtons /> */}
-          <OHLCTooltip
-            fontWeight={900}
-            fontSize={14}
-            textFill="#CBD5E0"
-            origin={[8, 16]}
-          />
+          <OHLCTooltip fontWeight={900} fontSize={14} textFill='#CBD5E0' origin={[8, 16]} />
         </Char>
-        <Char
-          id={4}
-          height={elderRayHeight}
-          yExtents={[0, elder.accessor()]}
-          origin={elderRayOrigin}
-          padding={{ top: 8, bottom: 8 }}
-        >
-          <XAxis
-            showGridLines
-            strokeStyle="#4A5568"
-            tickLabelFill="#718096"
-            tickStrokeStyle="#718096"
-            gridLinesStrokeStyle="#0d1117"
-          />
+        <Char id={4} height={elderRayHeight} yExtents={[0, elder.accessor()]} origin={elderRayOrigin} padding={{ top: 8, bottom: 8 }}>
+          <XAxis showGridLines strokeStyle='#4A5568' tickLabelFill='#718096' tickStrokeStyle='#718096' gridLinesStrokeStyle='#0d1117' />
           <YAxis
             ticks={4}
             tickFormat={pricesDisplayFormat}
-            strokeStyle="#4A5568"
-            tickLabelFill="#718096"
-            tickStrokeStyle="#718096"
-            gridLinesStrokeStyle="#0d1117"
+            strokeStyle='#4A5568'
+            tickLabelFill='#718096'
+            tickStrokeStyle='#718096'
+            gridLinesStrokeStyle='#0d1117'
           />
 
           <MouseCoordinateX displayFormat={timeDisplayFormat} />
-          <MouseCoordinateY
-            rectWidth={margin.right}
-            displayFormat={pricesDisplayFormat}
-          />
+          <MouseCoordinateY rectWidth={margin.right} displayFormat={pricesDisplayFormat} />
 
           <ElderRaySeries yAccessor={elder.accessor()} />
 
