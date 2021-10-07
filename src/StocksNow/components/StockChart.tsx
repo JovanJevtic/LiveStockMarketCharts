@@ -18,6 +18,7 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
   const [ranges, setRanges] = useState<Array<string>>(['1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '5y', 'max']);
   const [range, setRange] = useState<string>('1mo');
   const [interval, setInterval] = useState<string>('5m');
+  const [activeRangeNum, setActiveRangeNum] = useState<number>(2);
 
   const [timestamp, setTimestamp] = useState<Array<number> | undefined>([]);
   const [close, setClose] = useState<Array<number> | undefined>([]);
@@ -96,6 +97,7 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
 
   const rangeIntervalOnClick = (currRange: string, interval: string, num: number) => {
     if (currRange !== range) {
+      setActiveRangeNum(num);
       setRange(currRange);
       setInterval(interval);
       setTimestamp([0]);
@@ -104,7 +106,7 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
       setOpen([0]);
       setHigh([0]);
       setVolume([0]);
-      }
+    }
   };
 
   return (
@@ -113,47 +115,74 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
         <div className='chart-nav'>
           <ul>
             <li>
-              <div onClick={() => rangeIntervalOnClick('1d', '5m', 0)} ref={(el) => (btnRef.current[0] = el)}>
+              <div 
+                className={activeRangeNum === 0 ? 'active' : ''} 
+                onClick={() => rangeIntervalOnClick('1d', '5m', 0)}
+              >
                 <p>1d</p>
               </div>
             </li>
             <li>
-              <div ref={(el) => (btnRef.current[1] = el)} onClick={() => rangeIntervalOnClick('5d', '5m', 1)}>
+              <div 
+                className={activeRangeNum === 1 ? 'active' : ''} 
+                onClick={() => rangeIntervalOnClick('5d', '5m', 1)}
+              >
                 <p>5d</p>
               </div>
             </li>
             <li>
-              <div ref={(el) => (btnRef.current[2] = el)} onClick={() => rangeIntervalOnClick('1mo', '5m', 2)}>
+              <div 
+                className={activeRangeNum === 2 ? 'active' : ''} 
+                onClick={() => rangeIntervalOnClick('1mo', '5m', 2)}
+              >
                 <p>1mo</p>
               </div>
             </li>
             <li>
-              <div ref={(el) => (btnRef.current[3] = el)} onClick={() => rangeIntervalOnClick('3mo', '60m', 3)}>
+              <div 
+                className={activeRangeNum === 3 ? 'active' : ''} 
+                onClick={() => rangeIntervalOnClick('3mo', '60m', 3)}
+              >
                 <p>3mo</p>
               </div>
             </li>
             <li>
-              <div ref={(el) => (btnRef.current[4] = el)} onClick={() => rangeIntervalOnClick('6mo', '60m', 4)}>
+              <div 
+                className={activeRangeNum === 4 ? 'active' : ''} 
+                onClick={() => rangeIntervalOnClick('6mo', '60m', 4)}
+              >
                 <p>6mo</p>
               </div>
             </li>
             <li>
-              <div ref={(el) => (btnRef.current[5] = el)} onClick={() => rangeIntervalOnClick('1y', '60m', 5)}>
+              <div 
+                className={activeRangeNum === 5 ? 'active' : ''} 
+                onClick={() => rangeIntervalOnClick('1y', '60m', 5)}
+              >
                 <p>1y</p>
               </div>
             </li>
             <li>
-              <div ref={(el) => (btnRef.current[6] = el)} onClick={() => rangeIntervalOnClick('2y', '60m', 6)}>
+              <div 
+                className={activeRangeNum === 6 ? 'active' : ''} 
+                onClick={() => rangeIntervalOnClick('2y', '60m', 6)}
+              >
                 <p>2y</p>
               </div>
             </li>
             <li>
-              <div ref={(el) => (btnRef.current[7] = el)} onClick={() => rangeIntervalOnClick('5y', '1d', 7)}>
+              <div
+                className={activeRangeNum === 7 ? 'active' : ''} 
+                onClick={() => rangeIntervalOnClick('5y', '1d', 7)}
+              >
                 <p>5y</p>
               </div>
             </li>
             <li>
-              <div ref={(el) => (btnRef.current[8] = el)} onClick={() => rangeIntervalOnClick('max', '1d', 8)}>
+              <div
+                className={activeRangeNum === 8 ? 'active' : ''} 
+                onClick={() => rangeIntervalOnClick('max', '1d', 8)}
+              >
                 <p>max</p>
               </div>
             </li>
