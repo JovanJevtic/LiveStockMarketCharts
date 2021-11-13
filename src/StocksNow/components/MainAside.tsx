@@ -43,7 +43,7 @@ const MainAside: React.FC<Props> = ({ stockQuery }) => {
       <div className='main-aside-cards-stockNews-wrapp'>
         <div className='stockNews-card'>
           <a href={stockNews?.news[0].link}>
-            <div className='stockNews-headline-wrapp'>
+            <div className='stockNews-headline-wrapp'> 
               <p className='stockNews-headline'>
                 {' '}
                 Most recent from: <b style={{ color: '#27ffbc' }}>{stockQuery}</b>{' '}
