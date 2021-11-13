@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import useWindowDimensions from '../hooks/useWindowDimensions';
 import MainAside from './MainAside';
 import MainContent from './MainContent';
 
@@ -12,11 +13,13 @@ const Main: React.FC<Props> = () => {
     setStockQuery(e.currentTarget.value);
   };
 
+  const { windowHeight, windowWidth } = useWindowDimensions();
+
   return (
     <div className='main'>
       <MainContent />
 
-      <MainAside stockQuery={stockQuery} />
+      { windowWidth > 1359 && <MainAside stockQuery={stockQuery} /> }
     </div>
   );
 };

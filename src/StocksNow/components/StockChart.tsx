@@ -14,6 +14,8 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
   const btnRef = useRef<Array<HTMLDivElement | null>>([]);
   const { windowHeight, windowWidth } = useWindowDimensions();
 
+  const [chartWidth, setChartWidth] = useState<number | undefined>();
+
   const [symbol, setSymbol] = useState('');
   const [ranges, setRanges] = useState<Array<string>>(['1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '5y', 'max']);
   const [range, setRange] = useState<string>('1mo');
@@ -51,6 +53,19 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
   useEffect(() => {
     setSymbol(symbolData?.quotes[0].symbol as string);
   }, [symbolData]);
+
+  useEffect(() => {
+    let width;
+    if(windowWidth > 1359) {
+      width = windowWidth / 1.8;
+    } else if (windowWidth < 1359 && windowWidth > 899) {
+      width = windowWidth / 1.35;
+    } else if (windowWidth < 900) {
+      width = windowWidth / 1.1;
+    }
+
+    setChartWidth(width);
+  }, [windowWidth]);
 
   const { data, isLoading, error } = useFetch(`https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-charts`, {
     json: true,
@@ -188,7 +203,7 @@ const StockChart: React.FC<Props> = ({ stockQuery }) => {
             </li>
           </ul>
         </div>
-        <div className='chart-wrapp'>{items && <Chart height={windowHeight / 1.4} ratio={5} width={windowWidth / 1.8} data={items} />}</div>
+        <div className='chart-wrapp'>{items && <Chart height={windowHeight / 1.4} ratio={5} width={chartWidth as number} data={items} />}</div>
       </div>
     </div>
   );
